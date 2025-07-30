@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    /* ---------- BUILD + COPY UF2 ---------- */
+    {
+      "label": "Build and Upload to Olimex Pico2-XXL",
+      "type": "shell",
+      "command": "arduino-cli compile --fqbn rp2040:rp2040:olimex_pico2xxl --export-binaries . && cp ./build/rp2040.rp2040.olimex_pico2xxl/*.uf2 /media/$USER/RP2350/",
+      "group": {          // makes it the default Build task
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+    /* ---------- SERIAL MONITOR ---------- */
+    {
+      "label": "Serial Monitor",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "monitor",
+        "--port", "/dev/ttyACM0",   // ← set your port here
+        "-c", "baudrate=115200"     // ← set baud if needed
+      ],
+      "presentation": {
+        "panel": "dedicated",
+        "focus": true
+      }
+    }
+  ]
+}

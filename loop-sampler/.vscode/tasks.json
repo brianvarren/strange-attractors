@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Upload to Olimex Pico2-XXL",
+            "type": "shell",
+            "command": "arduino-cli compile --fqbn rp2040:rp2040:olimex_pico2xxl --export-binaries . && cp ./build/*.uf2 /media/$USER/RP2350/",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
